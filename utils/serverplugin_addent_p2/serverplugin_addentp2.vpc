@@ -1,0 +1,79 @@
+//-----------------------------------------------------------------------------
+//	SERVERPLUGIN_ADDENTP2.VPC
+//
+//	Project Script
+//-----------------------------------------------------------------------------
+
+$Macro SRCDIR		"..\.."
+//$Macro OUTBINDIR	"$SRCDIR\..\game\bin"
+$Macro OUTBINDIR	"E:\Portal2_2014_DBG\game\portal2\addons"
+
+$Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
+
+$Configuration
+{
+	$Compiler
+	{
+		$AdditionalIncludeDirectories		"$BASE,$SRCDIR\game\server,$SRCDIR\game\shared"
+		$PreprocessorDefinitions			"$BASE;serverplugin_addentp2ONLY;_MBCS"
+	}
+
+	$Linker
+	{
+		$AdditionalDependencies				"$BASE odbc32.lib odbccp32.lib"
+	}
+}
+
+$Project "Serverplugin_addentp2"
+{
+	$Folder	"Source Files"
+	{
+		$File	"baseentity_stub.cpp"
+		$File	"info_datadesc_acc.cpp"
+		$File	"pdbparser.cpp"
+		$File	"prop_test.cpp"
+		$File	"serverplugin_addentp2.cpp"
+	}
+
+	$Folder	"Header Files"
+	{
+		$Folder "Plugin Headers"
+		{
+			$File	"addresses.h"
+			$File	"baseanimating_stub.h"
+			$File	"baseentity_stub.h"
+			$File	"entlist_stub.h"
+			$File	"entoutput.h"
+			$File	"lib.h"
+			$File	"pdbparser.h"
+			$File	"physprop_stub.h"
+			$File	"triggers_stub.h"
+			$File	"util.h"
+		}
+		$File	"$SRCDIR\public\tier0\basetypes.h"
+		$File	"$SRCDIR\public\Color.h"
+		$File	"$SRCDIR\public\tier0\dbg.h"
+		$File	"$SRCDIR\public\eiface.h"
+		$File	"$SRCDIR\public\filesystem.h"
+		$File	"$SRCDIR\public\tier0\icommandline.h"
+		$File	"$SRCDIR\public\igameevents.h"
+		$File	"$SRCDIR\public\tier1\interface.h"
+		$File	"$SRCDIR\public\game\server\iplayerinfo.h"
+		$File	"$SRCDIR\public\engine\iserverplugin.h"
+		$File	"$SRCDIR\public\tier1\KeyValues.h"
+		$File	"$SRCDIR\public\tier0\mem.h"
+		$File	"$SRCDIR\public\tier0\memalloc.h"
+		$File	"$SRCDIR\public\tier0\memdbgon.h"
+		$File	"$SRCDIR\public\tier1\strtools.h"
+		$File	"$SRCDIR\public\tier1\utlbuffer.h"
+		$File	"$SRCDIR\public\tier1\utlmemory.h"
+		$File	"$SRCDIR\public\tier1\utlvector.h"
+		$File	"$SRCDIR\public\vstdlib\vstdlib.h"
+	}
+
+	$Folder	"Link Libraries"
+	{
+		$Lib mathlib
+		$Lib tier2
+	}
+}

@@ -348,7 +348,7 @@ struct datamap_t
 #define BEGIN_DATADESC( className ) \
 	datamap_t className::m_DataMap = { 0, 0, #className, NULL }; \
 	datamap_t *className::GetDataDescMap( void ) { return &m_DataMap; } \
-	datamap_t *className::GetBaseMap() { datamap_t *pResult; DataMapAccess((BaseClass *)NULL, &pResult); return pResult; } \
+	datamap_t *className::GetBaseMap() { return ((datamap_t *(__thiscall*)(CBaseEntity*))(GetBaseVfunc(VO_GETDATADESCMAP)))(NULL); /*datamap_t *pResult; DataMapAccess((BaseClass *)NULL, &pResult); return pResult; */} \
 	BEGIN_DATADESC_GUTS( className )
 
 #define BEGIN_DATADESC_NO_BASE( className ) \
